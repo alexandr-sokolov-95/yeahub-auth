@@ -1,0 +1,70 @@
+:root {
+  /* Colors — без изменений, они не переводятся в rem */
+  --color-text-primary: #191919;
+  --color-text-button: #303030;
+  --color-text-secondary: #474747;
+  --color-text-muted: #757575;
+  --color-text-faint: #8c8c8c;
+  --color-text-placeholder: #a3a3a3;
+
+  --color-border: #bababa;
+  --color-border-light: #e8e8e8;
+
+  --color-bg-page: #f4f4f4;
+  --color-bg-surface: #ffffff;
+
+  --color-accent: #6a0bff;
+  --color-accent-hover: #5509cc;
+  --color-accent-pressed: #400799;
+  --color-tag-text: #008616;
+  --color-tag-bg: #edf7ef;
+
+  --color-white: #fff;
+
+  /* Typography */
+  --font-family-base: 'Manrope', sans-serif;
+
+  --font-size-sm: 0.75rem;   /* было 12px */
+  --font-size-base: 0.875rem; /* было 14px */
+  --font-size-md: 1rem;       /* было 16px */
+  --font-size-lg: 1.5rem;     /* было 24px */
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.3;
+  --line-height-loose: 1.5;
+
+  /* Effects — shadow offset/radius тоже можно перевести, но необязательно, это не "текстовый" размер */
+  --shadow-card: 0px 0.25rem 0.625rem rgba(106, 99, 118, 0.1); /* 4px 10px */
+
+  /* Radii */
+  --radius-sm: 0.75rem;  /* было 12px */
+  --radius-md: 1.5rem;   /* было 24px */
+  --radius-pill: 4.25rem; /* было 68px */
+
+  --container-pad-mobile: 0.625rem;
+  --container-pad-tablet: rem(30);
+  --container-pad-desktop: rem(112);
+
+  /* Spacing */
+  --spacing-2: 0.125rem;  /* было 2px */
+  --spacing-4: 0.25rem;   /* было 4px */
+  --spacing-6: 0.375rem;  /* было 6px */
+  --spacing-8: 0.5rem;    /* было 8px */
+  --spacing-10: 0.625rem; /* было 10px */
+  --spacing-12: 0.75rem;  /* было 12px */
+  --spacing-14: 0.875rem; /* было 14px */
+  --spacing-16: 1rem;     /* было 16px */
+  --spacing-18: 1.125rem; /* было 18px */
+  --spacing-20: 1.25rem;  /* было 20px */
+  --spacing-24: 1.5rem;   /* было 24px */
+  --spacing-28: 1.75rem;  /* было 28px */
+  --spacing-32: 2rem;     /* было 32px */
+  --spacing-36: 2.25rem;  /* было 36px */
+  --spacing-40: 2.5rem;   /* было 40px */
+  --spacing-44: 2.75rem;  /* было 44px */
+  --spacing-48: 3rem;     /* было 48px */
+  --spacing-52: 3.25rem;  /* было 52px */
+  --spacing-56: 3.5rem;   /* было 56px */
+  --spacing-60: 3.75rem;  /* было 60px */
+  --spacing-64: 4rem;     /* было 64px */
+}
