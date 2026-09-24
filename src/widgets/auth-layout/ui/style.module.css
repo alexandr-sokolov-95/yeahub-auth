@@ -1,0 +1,22 @@
+.layout {
+  min-height: 100svh;
+  display: flex;
+  align-items: stretch;
+}
+
+.banner,
+.container {
+  width: 100%;
+}
+
+.banner {
+  background-color: navy;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
