@@ -1,0 +1,6 @@
+.cta {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}

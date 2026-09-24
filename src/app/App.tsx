@@ -1,8 +1,9 @@
 import './styles/global.css'
+import { RouterProvider } from 'react-router/dom'
+import { router } from './router/router'
 
 function App() {
-
-  return null
+  return <RouterProvider router={router} />
 }
 
 export default App
