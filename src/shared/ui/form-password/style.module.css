@@ -1,0 +1,7 @@
+.visibility {
+  position: absolute;
+  top: 50%;
+  right: var(--size-16);
+  font-size: inherit;
+  transform: translateY(-50%);
+}

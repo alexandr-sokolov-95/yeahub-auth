@@ -1,5 +1,4 @@
-import style from './style.module.css'
-import { ErrorMessage, FormInput, FormPassword } from '@/shared/ui'
+import { ErrorMessage, Form, FormInput, FormPassword, FormSubmit } from '@/shared/ui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { z } from 'zod'
@@ -39,7 +38,7 @@ export const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         label="Электронная почта"
         type="text"
@@ -53,10 +52,14 @@ export const LoginForm = () => {
         {...register('password')}
         error={errors.password}
       />
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Отправка...' : 'Войти'}
-      </button>
+      <FormSubmit
+        isLoading={isSubmitting}
+        disabled={isSubmitting}
+        style={{ marginBlockStart: 'var(--size-24)' }}
+      >
+        Войти
+      </FormSubmit>
       {errors.root && <ErrorMessage text={errors.root.message} />}
-    </form>
+    </Form>
   )
 }

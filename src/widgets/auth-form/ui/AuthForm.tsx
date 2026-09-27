@@ -1,3 +1,5 @@
+import style from './style.module.css'
+import { Text } from '@/shared/ui'
 import type { FC, ReactNode } from 'react'
 
 interface IAuthFormProps {
@@ -9,9 +11,11 @@ interface IAuthFormProps {
 export const AuthForm: FC<IAuthFormProps> = ({ title, footer, children }) => {
   return (
     <>
-      <h1>{title}</h1>
+      <Text as="h1" size={40} textAlign="center" style={{ marginBlockEnd: '30px' }}>
+        {title}
+      </Text>
       {children}
-      {footer}
+      <div className={style.footer}>{footer}</div>
     </>
   )
 }

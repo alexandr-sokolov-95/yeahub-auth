@@ -1,0 +1,29 @@
+.input {
+  --outline-color: transparent;
+
+  padding: var(--size-14) var(--size-16);
+  width: 100%;
+  font-size: var(--size-16);
+  line-height: var(--line-height-loose);
+  color: var(--color-text-primary);
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+
+  outline: 2px solid var(--outline-color);
+
+  transition: outline 0.1s ease;
+}
+
+.input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.input:focus-visible,
+.input:not(:placeholder-shown) {
+  --outline-color: var(--color-accent);
+}
+
+.error {
+  outline-color: var(--color-error);
+}

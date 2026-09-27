@@ -1,0 +1,11 @@
+.theme-default {
+  --logo-circle: var(--color-accent);
+  --logo-emblem: var(--color-white);
+  --logo-text: var(--color-text-primary);
+}
+
+.theme-white {
+  --logo-circle: var(--color-white);
+  --logo-emblem: var(--color-accent);
+  --logo-text: var(--color-white);
+}

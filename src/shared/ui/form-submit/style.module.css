@@ -1,0 +1,28 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  font-size: var(--size-18);
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  border-radius: var(--radius-sm);
+
+  transition:
+    background-color 0.2s ease,
+    opacity 0.1s ease;
+}
+
+.button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.button:active {
+  background-color: var(--color-accent-pressed);
+}
+
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

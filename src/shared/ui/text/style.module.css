@@ -1,0 +1,52 @@
+.text {
+  display: block;
+  line-height: var(--line-height-normal);
+}
+
+.size-12 {
+  font-size: var(--size-12);
+}
+
+.size-14 {
+  font-size: var(--size-14);
+}
+
+.size-16 {
+  font-size: var(--size-16);
+}
+
+.size-18 {
+  font-size: var(--size-18);
+}
+
+.size-20 {
+  font-size: var(--size-20);
+}
+
+.size-24 {
+  font-size: var(--size-24);
+}
+
+.size-32 {
+  font-size: var(--size-32);
+}
+
+.size-40 {
+  font-size: var(--size-40);
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.align-start {
+  text-align: start;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-end {
+  text-align: end;
+}

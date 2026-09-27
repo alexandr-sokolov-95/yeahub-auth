@@ -1,6 +1,5 @@
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import style from './style.module.css'
-import { ErrorMessage, FormInput, FormPassword } from '@/shared/ui'
+import { ErrorMessage, Form, FormInput, FormPassword, FormSubmit } from '@/shared/ui'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRegisterMutation } from '../../api'
@@ -55,7 +54,7 @@ export const RegisterForm = () => {
     }
   }
   return (
-    <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         type="text"
         placeholder="Введите имя пользователя"
@@ -82,10 +81,14 @@ export const RegisterForm = () => {
         {...registerInput('confirmPassword')}
         error={errors.confirmPassword}
       />
-      <button type="submit" disabled={isSubmitting}>
-        Зарегестрироваться
-      </button>
+      <FormSubmit
+        isLoading={isSubmitting}
+        disabled={isSubmitting}
+        style={{ marginBlockStart: 'var(--size-24)' }}
+      >
+        Войти
+      </FormSubmit>
       {errors.root && <ErrorMessage text={errors.root.message} />}
-    </form>
+    </Form>
   )
 }

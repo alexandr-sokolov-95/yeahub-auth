@@ -10,7 +10,10 @@ export const AuthCta = ({ type }: { type: TAuthCtaType }) => {
 
   return (
     <div className={style.cta}>
-      {text} <Link to={to}>{buttonText}</Link>
+      {text}{' '}
+      <Link to={to} style={{ color: 'var(--color-accent)' }}>
+        {buttonText}
+      </Link>
     </div>
   )
 }
