@@ -5,7 +5,7 @@ import type { FC, ReactNode } from 'react'
 interface IAuthFormProps {
   children?: ReactNode
   title: string
-  footer: ReactNode
+  footer?: ReactNode
 }
 
 export const AuthForm: FC<IAuthFormProps> = ({ title, footer, children }) => {
@@ -15,7 +15,7 @@ export const AuthForm: FC<IAuthFormProps> = ({ title, footer, children }) => {
         {title}
       </Text>
       {children}
-      <div className={style.footer}>{footer}</div>
+      {footer && <div className={style.footer}>{footer}</div>}
     </>
   )
 }

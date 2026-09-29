@@ -1,9 +1,10 @@
-import { ErrorMessage, Form, FormInput, FormPassword, FormSubmit } from '@/shared/ui'
+import { ErrorMessage, Form, FormInput, FormPassword, FormSubmit, Text } from '@/shared/ui'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { z } from 'zod'
 import { useLoginMutation } from '../../api'
 import { isApiErrorBody, isFetchBaseQueryError } from '@/shared/lib/api/error'
+import { Link } from 'react-router'
 
 const schema = z.object({
   username: z.string().email('Введите валидный email'),
@@ -30,7 +31,11 @@ export const LoginForm = () => {
       const { error } = result
 
       if (isFetchBaseQueryError(error) && isApiErrorBody(error.data)) {
-        setError('root', { message: error.data.description })
+        const message =
+          error.status === 401
+            ? 'Ошибка авторизации, попробуйте еще раз'
+            : 'Что-то пошло не так, попробуйте еще раз'
+        setError('root', { message: message })
       } else {
         setError('root', { message: 'Ошибка авторизации' })
       }
@@ -52,6 +57,9 @@ export const LoginForm = () => {
         {...register('password')}
         error={errors.password}
       />
+      <Text size={12} textAlign="end" color="var(--color-accent)">
+        <Link to="/restore-password">Забыли пароль?</Link>
+      </Text>
       <FormSubmit
         isLoading={isSubmitting}
         disabled={isSubmitting}

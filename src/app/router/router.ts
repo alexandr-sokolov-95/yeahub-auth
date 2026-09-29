@@ -7,6 +7,7 @@ import { Dashboard } from '@/pages/Dashboard'
 import { Posts } from '@/pages/Posts/ui/Posts'
 import { DashboardLayout } from '@/widgets/dashboard-layout/ui'
 import { AuthLayout } from '@/widgets/auth-layout/ui'
+import { RestorePassword } from '@/pages/RestorePassword'
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,7 @@ export const router = createBrowserRouter([
             Component: Login,
           },
           { path: 'register', Component: Register },
+          { path: 'restore-password', Component: RestorePassword },
         ],
       },
     ],

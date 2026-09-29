@@ -76,4 +76,6 @@ h6 {
 #root {
   min-height: 100vh;
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
 }
