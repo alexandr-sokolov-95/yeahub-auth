@@ -1,0 +1,17 @@
+.spinner {
+  --color: white;
+  animation: rotation 1.25s linear infinite;
+}
+
+.accent {
+  --color: var(--color-accent);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

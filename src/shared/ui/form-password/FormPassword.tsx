@@ -1,3 +1,4 @@
+import style from './style.module.css'
 import { forwardRef, useState } from 'react'
 import { FormInput } from '../form-input'
 import type { IFormInputProps } from '../form-input/FormInput'
@@ -16,7 +17,7 @@ export const FormPassword = forwardRef<HTMLInputElement, IFormPasswordProps>(({ 
       ref={ref}
       type={isVisible ? 'text' : 'password'}
       rightIconSlot={
-        <button type="button" onClick={toggleVisibility} tabIndex={-1}>
+        <button className={style.visibility} type="button" onClick={toggleVisibility} tabIndex={-1}>
           {isVisible ? '🙈' : '👁'}
         </button>
       }

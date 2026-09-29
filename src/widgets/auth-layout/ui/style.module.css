@@ -4,18 +4,32 @@
   align-items: stretch;
 }
 
-.banner,
-.container {
-  width: 100%;
-}
-
 .banner {
-  background-color: navy;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(60700% / 1440);
+  padding: 70px 20px;
+  background-color: var(--color-accent);
   color: white;
 }
 
-.container {
+.banner-list {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-container {
+  max-width: 333px;
+}
+
+.container {
+  position: relative;
+  padding: 105px 10px;
+  display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;

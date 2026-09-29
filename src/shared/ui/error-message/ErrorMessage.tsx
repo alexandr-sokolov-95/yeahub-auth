@@ -1,5 +1,6 @@
 import type { FC } from 'react'
 import style from './style.module.css'
+import { Text } from '../text'
 
 interface ErrorMessageProps {
   text: string | undefined
@@ -7,5 +8,9 @@ interface ErrorMessageProps {
 
 export const ErrorMessage: FC<ErrorMessageProps> = ({ text }) => {
   if (!text) return null
-  return <span className={style.message}>{text}</span>
+  return (
+    <Text size={12} color="var(--color-error)" className={style.message}>
+      {text}
+    </Text>
+  )
 }

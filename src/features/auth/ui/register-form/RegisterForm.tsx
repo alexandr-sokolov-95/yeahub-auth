@@ -1,10 +1,19 @@
-import { useForm, type SubmitHandler } from 'react-hook-form'
 import style from './style.module.css'
-import { ErrorMessage, FormInput, FormPassword } from '@/shared/ui'
+import { useForm, type SubmitHandler } from 'react-hook-form'
+import {
+  ErrorMessage,
+  Form,
+  FormCheckbox,
+  FormInput,
+  FormPassword,
+  FormSubmit,
+  Text,
+} from '@/shared/ui'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRegisterMutation } from '../../api'
 import { isApiErrorBody, isFetchBaseQueryError } from '@/shared/lib/api/error'
+import { Link } from 'react-router'
 
 const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
@@ -17,6 +26,9 @@ const schema = z
         'Пароль должен содержать хотя бы одну заглавную букву, одну строчную букву, цифру и специальный символ',
     }),
     confirmPassword: z.string(),
+    consent: z.literal(true, 'Необходимо согласие на обработку ПД'),
+    agreement: z.literal(true, 'Необходимо согласие с договором-офертой'),
+    ads: z.boolean().optional(),
   })
   .superRefine(({ password, confirmPassword }, ctx) => {
     if (password !== confirmPassword) {
@@ -39,6 +51,10 @@ export const RegisterForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      consent: true,
+      ads: true,
+    },
   })
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
@@ -48,14 +64,27 @@ export const RegisterForm = () => {
     if ('error' in result) {
       const { error } = result
       if (isFetchBaseQueryError(error) && isApiErrorBody(error.data)) {
-        setError('root', { message: error.data.description })
+        let message
+
+        switch (error.status) {
+          case 404:
+            message = 'Произошла ошибка, попробуйте еще раз'
+            break
+          case 409:
+            message = 'Пользователь с такими данными уже существует'
+            break
+          default:
+            message = 'Ошибка регистрации'
+            break
+        }
+        setError('root', { message: message })
       } else {
         setError('root', { message: 'Ошибка регистрации' })
       }
     }
   }
   return (
-    <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <FormInput
         type="text"
         placeholder="Введите имя пользователя"
@@ -82,10 +111,32 @@ export const RegisterForm = () => {
         {...registerInput('confirmPassword')}
         error={errors.confirmPassword}
       />
-      <button type="submit" disabled={isSubmitting}>
+      <FormSubmit isLoading={isSubmitting} disabled={isSubmitting}>
         Зарегестрироваться
-      </button>
+      </FormSubmit>
+      <FormCheckbox error={errors.consent} {...registerInput('consent')}>
+        <Text as="label" size={12}>
+          Даю согласие на{' '}
+          <Link to="#" className={style['consent-link']}>
+            обработку ПД
+          </Link>
+          , в соответствии с{' '}
+          <Link to="#" className={style['consent-link']}>
+            Политикой в отношении ПД
+          </Link>
+        </Text>
+      </FormCheckbox>
+      <FormCheckbox error={errors.agreement} {...registerInput('agreement')}>
+        <Text as="label" size={12}>
+          Я подтверждаю что ознакомился(-ась) с Договором-офертой
+        </Text>
+      </FormCheckbox>
+      <FormCheckbox {...registerInput('ads')}>
+        <Text as="label" size={12}>
+          Даю согласие на получение рекламных и информационных рассылок
+        </Text>
+      </FormCheckbox>
       {errors.root && <ErrorMessage text={errors.root.message} />}
-    </form>
+    </Form>
   )
 }

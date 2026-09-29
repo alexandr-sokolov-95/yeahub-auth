@@ -1,0 +1,32 @@
+.modal {
+  padding: var(--size-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(82 82 82 /0.4);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-10);
+}
+.close {
+  --size: var(--size-24);
+
+  align-self: flex-end;
+  flex: none;
+  width: var(--size);
+  height: var(--size);
+  background-image: url(../../assets/icons/modal-close.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

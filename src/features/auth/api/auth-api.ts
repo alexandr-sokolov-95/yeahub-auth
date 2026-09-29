@@ -54,12 +54,16 @@ export const authApi = baseApi.injectEndpoints({
     }),
     sendResetEmail: build.mutation<void, Pick<IRegisterData, 'email'>>({
       query: (email) => ({
-        url: '/auth/send-reset-password',
+        url: `/auth/send-reset-password?email=${email}`,
         method: 'GET',
-        body: email,
       }),
     }),
   }),
 })
 
-export const { useLoginMutation, useRegisterMutation, useLazyLogoutQuery } = authApi
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLazyLogoutQuery,
+  useSendResetEmailMutation,
+} = authApi
